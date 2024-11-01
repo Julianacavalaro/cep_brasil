@@ -20,9 +20,9 @@ if(response.status == 200){
 
   final body =jsonDecode(response.body);
 
-  body['json'].map(body);
+ var dados =  body['json'].map(body);
 
-  return body;
+  return dados;
 }else if(response.status == 400){
   throw Exception('Bad request: certifique-se que o mesmo possua {8} dígitos');
 } else {
