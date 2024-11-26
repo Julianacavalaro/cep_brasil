@@ -14,9 +14,10 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Consumo de API"),
         backgroundColor: Colors.purple,
-        titleTextStyle: TextStyle(color: Colors.white),
+        titleTextStyle:const TextStyle(fontSize: 20,color: Colors.white),
       ),
       body:Container(
+        padding: EdgeInsets.all(20),
         child: Center(
           child: Column(
             children: [
@@ -25,6 +26,12 @@ class _HomeState extends State<Home> {
                 decoration: InputDecoration(labelText: 'Digite um cep:'),
                 style: TextStyle(fontSize: 16, color: Colors.blueAccent),
               ),
+              Container(height: 20),
+              ElevatedButton(
+                child: Text('Consultar'),
+                onPressed: () {},
+              ),
+              Text('O endereço aparecerá aqui'),
             ],
           ),
         ),
