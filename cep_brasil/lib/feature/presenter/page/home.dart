@@ -14,6 +14,7 @@ class _HomeState extends State<Home> {
       appBar: AppBar(
         title: Text("Consumo de API"),
         backgroundColor: Colors.purple,
+        titleTextStyle: TextStyle(color: Colors.white),
       ),
       body:Container(
         child: Center(
