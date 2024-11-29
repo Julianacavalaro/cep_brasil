@@ -40,7 +40,6 @@ TextEditingController txtCep = TextEditingController();
               ElevatedButton(
                 child: Text('Consultar'),
                 onPressed: buscaCep,
-,
               ),
               Text(resultado),
             ],
