@@ -8,6 +8,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+
+String resultado = "Seu cep irá aparecer aqui";
+
+TextEditingController txtCep = TextEditingController();
+ 
+  void buscaCep(){
+    String cep = txtCep.text;
+    String url = "https://viacep.com.br/ws/$cep/json/";
+  }
   @override
   Widget build(BuildContext context) {  
     return Scaffold(
@@ -22,6 +31,7 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               TextField(
+                controller: txtCep,
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(labelText: 'Digite um cep:'),
                 style: TextStyle(fontSize: 16, color: Colors.blueAccent),
@@ -29,9 +39,10 @@ class _HomeState extends State<Home> {
               Container(height: 20),
               ElevatedButton(
                 child: Text('Consultar'),
-                onPressed: () {},
+                onPressed: buscaCep,
+,
               ),
-              Text('O endereço aparecerá aqui'),
+              Text(resultado),
             ],
           ),
         ),
