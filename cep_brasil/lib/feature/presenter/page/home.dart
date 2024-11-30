@@ -1,3 +1,4 @@
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -13,9 +14,13 @@ String resultado = "Seu cep irá aparecer aqui";
 
 TextEditingController txtCep = TextEditingController();
  
-  void buscaCep(){
+  void buscaCep() async{
     String cep = txtCep.text;
     String url = "https://viacep.com.br/ws/$cep/json/";
+    http.Response response;
+    response = await  http.get(Uri.parse(url));
+    print("Resposta: " + response.body);
+    print("StatusCode: " + response.statusCode.toString());
   }
   @override
   Widget build(BuildContext context) {  
