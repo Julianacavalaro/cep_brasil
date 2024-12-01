@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -21,6 +23,19 @@ TextEditingController txtCep = TextEditingController();
     response = await  http.get(Uri.parse(url));
     print("Resposta: " + response.body);
     print("StatusCode: " + response.statusCode.toString());
+
+    Map<String, dynamic> dados = json.decode(response.body);
+
+    String logradouro = dados["logradouro"];
+    String complemento = dados["complemento"];
+    String bairro = dados["bairro"];
+    String localidade = dados["localidade"];
+
+    String enedereco = "O endereço é $logradouro, $complemento, $bairro, $localidade";
+ 
+ setState(() {
+  resultado = enedereco;
+   } );
   }
   @override
   Widget build(BuildContext context) {  
