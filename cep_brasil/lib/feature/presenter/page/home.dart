@@ -25,8 +25,7 @@ TextEditingController txtCep = TextEditingController();
     print("Resposta: " + response.body);
     print("StatusCode: " + response.statusCode.toString());
 
-   // Map<String, dynamic> dados = json.decode(response.body);
-    CepModel.decode(dados);
+    Map<String, dynamic> dados = json.decode(response.body);
 
     String logradouro = dados["logradouro"];
     String complemento = dados["complemento"];
