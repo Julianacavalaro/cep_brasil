@@ -5,14 +5,17 @@ import 'package:cep_brasil/feature/domain/model/cep_model.dart';
 import '../../external/http/http_client.dart';
 
 abstract class IConsultaCepRepository{
-  Future<CepModel> getCep();
+  Future<CepModel> getEndereco();
 }
 
 class ConsultaCepRepository implements IConsultaCepRepository{
-  late final IHttpClient client;
+ final IHttpClient response;
+
+  ConsultaCepRepository({required this.response});
   
   @override
-  Future<CepModel> getCep() async {
+  Future<CepModel> getEndereco() async {
+   
   final response = await client.get(url: 'viacep.com.br/ws/09310150/json/',
 );
 if(response.status == 200){

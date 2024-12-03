@@ -5,12 +5,12 @@ abstract class IHttpClient {
  }
 
  class HttpClient implements IHttpClient {
-
- final client = http.Client();
  
+ final response = http.Response;
+
   @override
   Future get({required String url}) async {
-   return await client.get(Uri.parse(url));
+   return await http.get(Uri.parse(url));
   }
 
  }

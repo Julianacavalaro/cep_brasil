@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:cep_brasil/feature/domain/model/cep_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -24,17 +25,19 @@ TextEditingController txtCep = TextEditingController();
     print("Resposta: " + response.body);
     print("StatusCode: " + response.statusCode.toString());
 
-    Map<String, dynamic> dados = json.decode(response.body);
+   // Map<String, dynamic> dados = json.decode(response.body);
+    CepModel.decode(dados);
 
     String logradouro = dados["logradouro"];
     String complemento = dados["complemento"];
     String bairro = dados["bairro"];
     String localidade = dados["localidade"];
 
-    String enedereco = "O endereço é $logradouro, $complemento, $bairro, $localidade";
+
+    String endereco = "O endereço é $logradouro, $complemento, $bairro, $localidade";
  
  setState(() {
-  resultado = enedereco;
+  resultado = endereco;
    } );
   }
   @override
