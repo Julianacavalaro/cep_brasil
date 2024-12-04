@@ -4,34 +4,46 @@ import 'package:cep_brasil/feature/domain/model/cep_model.dart';
 
 import '../../external/http/http_client.dart';
 
-abstract class IConsultaCepRepository{
-  Future<CepModel> getEndereco();
+abstract class IConsultaCepRepository {
+  Future<CepModel> getEndereco({required String cep});
 }
 
-class ConsultaCepRepository implements IConsultaCepRepository{
- final IHttpClient response;
+class ConsultaCepRepository implements IConsultaCepRepository {
+  final IHttpClient client;
 
-  ConsultaCepRepository({required this.response});
-  
+  ConsultaCepRepository({required this.client});
+
   @override
-  Future<CepModel> getEndereco() async {
-   
-  final response = await client.get(url: 'viacep.com.br/ws/09310150/json/',
-);
-if(response.status == 200){
- // final CepModel cep;
+  Future<CepModel> getEndereco({required String cep}) async {
+    String url = "https://viacep.com.br/ws/$cep/json/";
 
-  final body =jsonDecode(response.body);
+    final response = await client.get(url: url);
 
- var dados =  body['json'].map(body);
+    if (response.status == 200) {
+      // final CepModel cep;
 
-  return dados;
-}else if(response.status == 400){
-  throw Exception('Bad request: certifique-se que o mesmo possua {8} dígitos');
-} else {
-  throw Exception('Não foi possível encontrar o endereço');
-}
+//   final body =jsonDecode(response.body);
+
+//  var dados =  body['json'].map(body);
+
+//   return dados;
+
+      print("Resposta: " + response.body);
+      print("StatusCode: " + response.statusCode.toString());
+
+      Map<String, dynamic> dados = json.decode(response.body);
+      String logradouro = dados["logradouro"];
+      String complemento = dados["complemento"];
+      String bairro = dados["bairro"];
+      String localidade = dados["localidade"];
+      final decode = CepModel.decode(dados);
+
+      return decode;
+    } else if (response.status != 200) {
+      throw Exception(
+          'Bad request: certifique-se que o mesmo possua {8} dígitos');
+    } else {
+      throw Exception('Não foi possível encontrar o endereço');
+    }
   }
-  
-
 }

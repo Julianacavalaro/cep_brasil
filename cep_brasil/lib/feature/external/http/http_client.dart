@@ -1,4 +1,4 @@
-import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 abstract class IHttpClient {
   Future get({required String url});
@@ -6,11 +6,11 @@ abstract class IHttpClient {
 
  class HttpClient implements IHttpClient {
  
- final response = http.Response;
+ final client = Client();
 
   @override
   Future get({required String url}) async {
-   return await http.get(Uri.parse(url));
+   return await client.get(Uri.parse(url));
   }
 
  }
