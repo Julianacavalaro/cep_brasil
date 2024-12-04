@@ -15,6 +15,7 @@ class ConsultaCepRepository implements IConsultaCepRepository {
 
   @override
   Future<CepModel> getEndereco({required String cep}) async {
+   // String cep = '';
     String url = "https://viacep.com.br/ws/$cep/json/";
 
     final response = await client.get(url: url);

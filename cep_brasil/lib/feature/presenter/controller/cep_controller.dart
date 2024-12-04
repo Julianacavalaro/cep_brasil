@@ -1,21 +1,21 @@
-import 'package:cep_brasil/feature/infraestruture/repository/consulta_cep_repository.dart';
+import 'package:cep_brasil/feature/domain/usecase/find_address_usecase.dart';
+
+import '../../domain/model/cep_model.dart';
 
 abstract class CepController {
-  final IConsultaCepRepository repository;
+  final FindAddressUsecase usecase;
 
-  CepController({required this.repository});
+  CepController(this.usecase);
 
-Future<String> getEnderecoCompleto({required String cep});
-
-
+Future<CepModel> getEnderecoCompleto({required String cep});
 }
 
 class CepControllerImpl extends CepController{
-  CepControllerImpl({required super.repository});
+  CepControllerImpl(super.usecase);
   
   @override
-  Future<String> getEnderecoCompleto({required String cep}) {
-
+  Future<CepModel> getEnderecoCompleto({required String cep}) {
+   return usecase.findAddress(cep: cep);
     throw UnimplementedError();
   }
 

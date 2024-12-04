@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:cep_brasil/feature/domain/model/cep_model.dart';
+import 'package:cep_brasil/feature/infraestruture/repository/consulta_cep_repository.dart';
+import 'package:cep_brasil/feature/presenter/controller/cep_controller.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
@@ -12,11 +14,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+ late CepControllerImpl controller;
+ late ConsultaCepRepository repository;
 
 String resultado = "Seu cep irá aparecer aqui";
+    TextEditingController txtCep = TextEditingController();
 
-TextEditingController txtCep = TextEditingController();
- 
   void buscaCep() async{
     String cep = txtCep.text;
     String url = "https://viacep.com.br/ws/$cep/json/";
@@ -41,6 +44,9 @@ TextEditingController txtCep = TextEditingController();
   }
   @override
   Widget build(BuildContext context) {  
+    TextEditingController txtCep = TextEditingController();
+String cep = txtCep.text;
+controller.getEnderecoCompleto(cep: cep);
     return Scaffold(
       appBar: AppBar(
         title: Text("Consumo de API"),
