@@ -15,12 +15,11 @@ class ConsultaCepRepository implements IConsultaCepRepository {
 
   @override
   Future<CepModel> getEndereco({required String cep}) async {
-   // String cep = '';
     String url = "https://viacep.com.br/ws/$cep/json/";
 
     final response = await client.get(url: url);
 
-    if (response.status == 200) {
+    if (response.statusCode == 200) {
       // final CepModel cep;
 
 //   final body =jsonDecode(response.body);
@@ -33,10 +32,10 @@ class ConsultaCepRepository implements IConsultaCepRepository {
       print("StatusCode: " + response.statusCode.toString());
 
       Map<String, dynamic> dados = json.decode(response.body);
-      String logradouro = dados["logradouro"];
-      String complemento = dados["complemento"];
-      String bairro = dados["bairro"];
-      String localidade = dados["localidade"];
+    //  String logradouro = dados["logradouro"];
+    //  String complemento = dados["complemento"];
+   //   String bairro = dados["bairro"];
+    //  String localidade = dados["localidade"];
       final decode = CepModel.decode(dados);
 
       return decode;

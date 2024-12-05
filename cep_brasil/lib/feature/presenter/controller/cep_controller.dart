@@ -5,18 +5,18 @@ import '../../domain/model/cep_model.dart';
 abstract class CepController {
   final FindAddressUsecase usecase;
 
-  CepController(this.usecase);
+  CepController({required this.usecase});
 
-Future<CepModel> getEnderecoCompleto({required String cep});
+Future<CepModel> getEndereco({required String cep});
 }
 
 class CepControllerImpl extends CepController{
-  CepControllerImpl(super.usecase);
+  CepControllerImpl({required super.usecase});
   
   @override
-  Future<CepModel> getEnderecoCompleto({required String cep}) {
-   return usecase.findAddress(cep: cep);
-    throw UnimplementedError();
+  Future<CepModel> getEndereco({required String cep}) async {
+     final dados = await usecase.findAddress(cep: cep);
+   return dados;
   }
 
 }

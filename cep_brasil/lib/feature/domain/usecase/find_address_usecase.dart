@@ -14,7 +14,8 @@ class FindAddressUsecaseImpl extends FindAddressUsecase{
 
   @override
   Future<CepModel> findAddress({required String cep}) async {
-     return repository.getEndereco(cep: cep);
+   final dados = await repository.getEndereco(cep: cep);
+     return dados;
   }
 
 }
