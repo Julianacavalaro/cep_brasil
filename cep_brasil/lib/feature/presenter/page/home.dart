@@ -19,13 +19,17 @@ class _HomeState extends State<Home> {
   String resultado = "Seu cep irá aparecer aqui";
   TextEditingController txtCep = TextEditingController();
 
+  void conselhoPage(){
+Navigator.of(context).pushNamed('/conselho-page');
+  }
+
   void buscaCep() async {
     String cep = txtCep.text;
     var dados = await controller.getEndereco(cep: cep);
 
     String endereco =
         "O endereço é ${dados.logradouro}, ${dados.complemento}, ${dados.bairro}, ${dados.localidade} - ${dados.uf}";
-    setState(() {
+    setState(() {  
       resultado = endereco;
     });
   }
@@ -55,6 +59,11 @@ class _HomeState extends State<Home> {
                 child: Text('Consultar'),
               ),
               Text(resultado),
+                            Container(height: 20),
+              ElevatedButton(
+                onPressed: conselhoPage,
+                child: Text('Quero um conselho'),
+              ),
             ],
           ),
         ),
