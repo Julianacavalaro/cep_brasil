@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class ConselhoPage extends StatefulWidget{
+  const ConselhoPage({super.key});
+
   
   @override
   State<StatefulWidget> createState() {
