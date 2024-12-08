@@ -1,5 +1,5 @@
 import 'package:cep_brasil/feature/domain/usecase/find_address_usecase.dart';
-import 'package:cep_brasil/feature/external/http/http_client.dart';
+import 'package:cep_brasil/feature/external/http/http_client_datasource.dart';
 import 'package:cep_brasil/feature/infraestruture/repository/consulta_cep_repository.dart';
 import 'package:cep_brasil/feature/presenter/controller/cep_controller.dart';
 import 'package:flutter/material.dart';
