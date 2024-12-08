@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:cep_brasil/feature/domain/model/cep_model.dart';
 
-import '../../external/http/http_client_datasource.dart';
+import '../../external/http/http_client.dart';
 
 abstract class IConsultaCepRepository {
   Future<CepModel> getEndereco({required String cep});
 }
 
 class ConsultaCepRepository implements IConsultaCepRepository {
-  final HttpClient client;
+  final IHttpClient client;
 
   ConsultaCepRepository({required this.client});
 
