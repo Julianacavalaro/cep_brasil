@@ -13,27 +13,27 @@ class ConselhoPage extends StatefulWidget {
 }
 
 class _ConselhoPageState extends State<ConselhoPage> {
-
-    final ConselhoController controller = ConselhoControllerImpl(
+  final ConselhoController controller = ConselhoControllerImpl(
       usecase: ConselhoUsecaseImpl(
           repository: ConselhoRepository(client: HttpClient())));
-
-    String resultado = 'Seu conselho aparecerá aqui';
-
+  String resultado = 'Seu conselho aparecerá aqui';
+  dynamic loading = CircularProgressIndicator();
   @override
   void initState() {
     super.initState();
     getRandomAdvice();
   }
+    var carregar = true;
 
-void getRandomAdvice() async{
-  var advice = await controller.getAdvice().toString();
+  void getRandomAdvice() async {
+    var advice = await controller.getAdvice();
 
-
-    setState(() {  
-      resultado = advice;
+    setState(() {
+            resultado = advice.slip.advice;
+            carregar = false;
     });
-}
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,13 +44,18 @@ void getRandomAdvice() async{
         surfaceTintColor: Colors.white,
         actionsIconTheme: IconThemeData(color: Colors.white),
       ),
-           body: Container(
+      body: Container(
         padding: const EdgeInsets.all(20),
         child: Center(
-          child: Text(resultado),
+          child: Column(
+            children: [
+              carregar ? loading : Text(resultado),
+              Container(height: 20),
+              
+            ],
+          ),
         ),
-            
-        ),
+      ),
     );
   }
 }
