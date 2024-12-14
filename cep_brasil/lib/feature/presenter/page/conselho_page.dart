@@ -38,11 +38,11 @@ class _ConselhoPageState extends State<ConselhoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("API de conselho"),
+        title: const Text("API de conselho"),
         backgroundColor: Colors.purple,
         titleTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
         surfaceTintColor: Colors.white,
-        actionsIconTheme: IconThemeData(color: Colors.white),
+        actionsIconTheme: const IconThemeData(color: Colors.white),
       ),
       body: Container(
         padding: const EdgeInsets.all(20),
@@ -51,7 +51,6 @@ class _ConselhoPageState extends State<ConselhoPage> {
             children: [
               carregar ? loading : Text(resultado),
               Container(height: 20),
-              
             ],
           ),
         ),

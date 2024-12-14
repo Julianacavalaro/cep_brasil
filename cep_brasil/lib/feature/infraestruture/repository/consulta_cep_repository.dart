@@ -20,23 +20,14 @@ class ConsultaCepRepository implements IConsultaCepRepository {
     final response = await client.get(url: url);
 
     if (response.statusCode == 200) {
-      // final CepModel cep;
-
- final body =jsonDecode(response.body);
-
-//  var dados =  body['json'].map(body);
-
-//   return dados;
-
-      print("Resposta: " + response.body);
+      print("Resposta: ${response.body}");
       print("StatusCode: ${response.statusCode}");
 
+      // Decodificando o JSON para Map
+      Map<String, dynamic> data = jsonDecode(response.body);
 
-        // Decodificando o JSON para Map
-  Map<String, dynamic> data = jsonDecode(response.body);
-
-  // Criando uma instância de CepModel
-  CepModel cep = CepModel.fromMap(data);
+      // Convertendo o mapa para um objeto CepModel
+      final CepModel cep = CepModel.fromMap(data);
 
       return cep;
     } else if (response.statusCode != 200) {

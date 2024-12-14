@@ -23,9 +23,6 @@ class ConselhoRepository implements IConselhoRepository {
 
   // Convertendo o mapa para um objeto AdviceResponse
   final AdviceModel adviceResponse = AdviceModel.fromJson(jsonMap);
-     // Map<String, dynamic> dados = json.decode(response.body);
-
-   //   final decode = SlipModel.decode(dados);
 
       return adviceResponse;
     } else  {
