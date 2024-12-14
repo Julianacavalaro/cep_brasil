@@ -22,7 +22,7 @@ class ConsultaCepRepository implements IConsultaCepRepository {
     if (response.statusCode == 200) {
       // final CepModel cep;
 
-//   final body =jsonDecode(response.body);
+ final body =jsonDecode(response.body);
 
 //  var dados =  body['json'].map(body);
 
@@ -31,14 +31,19 @@ class ConsultaCepRepository implements IConsultaCepRepository {
       print("Resposta: " + response.body);
       print("StatusCode: " + response.statusCode.toString());
 
-      Map<String, dynamic> dados = json.decode(response.body);
     //  String logradouro = dados["logradouro"];
     //  String complemento = dados["complemento"];
    //   String bairro = dados["bairro"];
     //  String localidade = dados["localidade"];
-      final decode = CepModel.decode(dados);
+      //final decode = CepModel.fromMap(cepModel);
 
-      return decode;
+        // Decodificando o JSON para Map
+  Map<String, dynamic> data = jsonDecode(response.body);
+
+  // Criando uma instância de CepModel
+  CepModel cep = CepModel.fromMap(data);
+
+      return cep;
     } else if (response.statusCode != 200) {
       throw Exception(
           'Bad request: certifique-se que o mesmo possua {8} dígitos');

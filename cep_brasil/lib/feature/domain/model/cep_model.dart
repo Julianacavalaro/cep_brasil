@@ -21,6 +21,9 @@ class CepModel {
       required this.estado,
       required this.regiao});
 
+//Use jsonDecode para converter a string JSON em um Map<String, dynamic>.
+//Use o método fromJson da classe para criar um objeto com os dados.
+
   factory CepModel.fromMap(Map<String, dynamic> map) {
     return CepModel(
         cep: map['cep'],
@@ -34,7 +37,7 @@ class CepModel {
         regiao: map['regiao']);
   }
 
-  factory CepModel.decode(Map<String, dynamic> map) {
+ /* factory CepModel.decode(Map<String, dynamic> map) {
     return CepModel(
       cep: map['cep'],
       logradouro: map['logradouro'],
@@ -46,5 +49,5 @@ class CepModel {
       estado: map['estado'],
       regiao: map['regiao'],
     );
-  }
+  } */
 }

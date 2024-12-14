@@ -17,7 +17,7 @@ class _ConselhoPageState extends State<ConselhoPage> {
       usecase: ConselhoUsecaseImpl(
           repository: ConselhoRepository(client: HttpClient())));
   String resultado = 'Seu conselho aparecerá aqui';
-  dynamic loading = CircularProgressIndicator();
+  dynamic loading = const CircularProgressIndicator();
   @override
   void initState() {
     super.initState();
