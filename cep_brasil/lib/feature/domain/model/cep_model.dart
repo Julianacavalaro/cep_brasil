@@ -36,18 +36,4 @@ class CepModel {
         estado: map['estado'],
         regiao: map['regiao']);
   }
-
- /* factory CepModel.decode(Map<String, dynamic> map) {
-    return CepModel(
-      cep: map['cep'],
-      logradouro: map['logradouro'],
-      complemento: map['complemento'],
-      unidade: map['unidade'],
-      bairro: map['bairro'],
-      localidade: map['localidade'],
-      uf: map['uf'],
-      estado: map['estado'],
-      regiao: map['regiao'],
-    );
-  } */
 }

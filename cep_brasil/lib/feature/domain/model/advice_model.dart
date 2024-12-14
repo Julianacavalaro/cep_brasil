@@ -11,9 +11,4 @@ class AdviceModel {
     );
   }
 
- // Map<String,dynamic> toJson() {
-  //  return {
-   //       'slip': slip.toJson(),
-  //  };
- // }
 }

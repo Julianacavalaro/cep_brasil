@@ -38,7 +38,7 @@ Navigator.of(context).pushNamed('/conselho-page');
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Consumo de API"),
+        title: const Text("Consumo de API"),
         backgroundColor: Colors.purple,
         titleTextStyle: const TextStyle(fontSize: 20, color: Colors.white),
       ),
@@ -56,13 +56,13 @@ Navigator.of(context).pushNamed('/conselho-page');
               Container(height: 20),
               ElevatedButton(
                 onPressed: buscaCep,
-                child: Text('Consultar'),
+                child: const Text('Consultar'),
               ),
               Text(resultado),
                             Container(height: 20),
               ElevatedButton(
                 onPressed: conselhoPage,
-                child: Text('Quero um conselho'),
+                child: const Text('Quero um conselho'),
               ),
             ],
           ),

@@ -1,7 +1,6 @@
 import 'package:cep_brasil/feature/domain/usecase/conselho_usecase.dart';
 
 import '../../domain/model/advice_model.dart';
-import '../../domain/model/slip_model.dart';
 
 abstract class ConselhoController {
   final ConselhoUsecase usecase;

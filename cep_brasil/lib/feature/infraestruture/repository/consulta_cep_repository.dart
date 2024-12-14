@@ -29,13 +29,8 @@ class ConsultaCepRepository implements IConsultaCepRepository {
 //   return dados;
 
       print("Resposta: " + response.body);
-      print("StatusCode: " + response.statusCode.toString());
+      print("StatusCode: ${response.statusCode}");
 
-    //  String logradouro = dados["logradouro"];
-    //  String complemento = dados["complemento"];
-   //   String bairro = dados["bairro"];
-    //  String localidade = dados["localidade"];
-      //final decode = CepModel.fromMap(cepModel);
 
         // Decodificando o JSON para Map
   Map<String, dynamic> data = jsonDecode(response.body);
