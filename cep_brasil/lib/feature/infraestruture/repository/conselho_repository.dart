@@ -18,18 +18,19 @@ class ConselhoRepository implements IConselhoRepository {
     final response = await client.get(url: url);
 
     if (response.statusCode == 200) {
- // Decodificando o JSON para um mapa
-  final Map<String, dynamic> jsonMap = json.decode(response.body);
+      // Decodificando o JSON para um mapa
+      final Map<String, dynamic> jsonMap = json.decode(response.body);
 
-  // Convertendo o mapa para um objeto AdviceResponse
-  final AdviceModel adviceResponse = AdviceModel.fromJson(jsonMap);
+      // Convertendo o mapa para um objeto AdviceModel
+      final AdviceModel adviceResponse = AdviceModel.fromJson(jsonMap);
 
       return adviceResponse;
-    } else  {
+    } else {
       var resposta = response.statusCode;
-      throw Exception(
-          'ERRO\n response: $resposta');
-    }
-  }
+              
+     throw Exception('ERRO\n response: $resposta');
 
+    }
+    
+  }
 }
